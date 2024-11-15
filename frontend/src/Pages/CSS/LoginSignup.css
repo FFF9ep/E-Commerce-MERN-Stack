@@ -119,3 +119,23 @@
         font-size: 16px;
     }
 }
+
+@media (max-width: 500px) {
+    .loginsignup-container {
+        padding: 10px 20px;
+        height: 450px;
+    }
+    .loginsignup-container h1 {
+        font-size: 22px;
+    }
+    .loginsignup-field {
+        margin-top: 16px;
+    }
+    .loginsignup-field input {
+        height: 40px;
+    }
+    .loginsignup-container button {
+        height: 40px;
+        font-size: 14px;
+    }
+}
