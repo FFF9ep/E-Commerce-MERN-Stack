@@ -1,9 +1,12 @@
+require('dotenv').config();
+
 const port = 4000;
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 const multer = require('multer');
 const jwt = require('jsonwebtoken');
+
 
 const app = express();
 const path = require('path');
@@ -13,17 +16,13 @@ app.use(express.json());
 app.use(cors());
 
 // Database Connection With MongoDB
-mongoose.connect("mongodb+srv://default:Y2DQ3caNlBOvqIIw@cluster0.1owha.mongodb.net/e-commerce")
+mongoose.connect(process.env.DATABASE, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
     .then(() => console.log('Connected to MongoDB'))
-    .catch(err => console.error('Error connecting to MongoDB', err));
-
-// mongoose.connect(process.env.DATABASE, {
-//         useNewUrlParser: true,
-//         useUnifiedTopology: true
-//     })
-//     .then(() => console.log('Connected to MongoDB'))
-//     .catch(err => console.error('Error connecting to MongoDB', err));
-
+    .catch(err => console.error('Error   connecting to MongoDB', err));
+    
 // API Create
 
 app.get("/", (req,res) => {
