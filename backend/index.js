@@ -22,7 +22,18 @@ mongoose.connect(process.env.DATABASE, {
 })
     .then(() => console.log('Connected to MongoDB'))
     .catch(err => console.error('Error   connecting to MongoDB', err));
-    
+
+    // const dns = require('dns');
+
+    // dns.lookup('cluster0.1owha.mongodb.net', (err, address, family) => {
+    // if (err) {
+    //     console.error('DNS lookup failed:', err);
+    // } else {
+    //     console.log('Address:', address);
+    //     console.log('Family:', family);
+    // }
+    // });
+
 // API Create
 
 app.get("/", (req,res) => {
