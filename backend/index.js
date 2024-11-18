@@ -60,6 +60,7 @@ app.post("/upload",upload.single('product'), (req,res) => {
         success: 1,
         Image_url: `http:localhost:${port}/images/${req.file.filename}`
     })
+    console.log(req.body)
 })
 
 app.listen(port, (error) => {
