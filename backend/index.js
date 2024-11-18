@@ -10,7 +10,8 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const path = require('path');
-const { error } = require('console');
+// const { error, log } = require('console');
+// const { json } = require('stream/consumers');
 
 app.use(express.json());
 app.use(cors());
