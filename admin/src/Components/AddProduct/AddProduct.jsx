@@ -29,16 +29,16 @@ const AddProduct = () => {
         <div className='add-product'>
             <div className="addproduct-itemfield">
                 <p>Product Title</p>
-                <input value={productDetails.name} onChange={changeHandler} type="text" name="name" placeholder='Type Here' />
+                <input value={productDetails.name} onChange={changeHandler} type="text" name="name" placeholder='Type Here'/>
             </div>
             <div className="addproduct-price">
                 <div className="addproduct-itemfield">
                     <p>Price</p>
-                    <input value={productDetails.old_price} onChange={changeHandler} type="text" name="old-price" placeholder='Type Here' />
+                    <input value={productDetails.old_price} onChange={changeHandler} type="text" name="old-price" placeholder='Type Here'/>
                 </div>
                 <div className="addproduct-itemfield">
                     <p>Offer Price</p>
-                    <input value={productDetails.new_price} onChange={changeHandler} type="text" name="new-price" placeholder='Type Here' />
+                    <input value={productDetails.new_price} onChange={changeHandler} type="text" name="new-price" placeholder='Type Here'/>
                 </div>
             </div>
             <div className="addproduct-itemfield">
