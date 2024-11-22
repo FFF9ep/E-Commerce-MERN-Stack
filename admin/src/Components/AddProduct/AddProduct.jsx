@@ -1,9 +1,8 @@
-import React, { useState } from 'react'
-import './AddProduct.css'
-import upload_area from '../../assets/upload_area.svg'
+import React, { useState } from 'react';
+import './AddProduct.css';
+import upload_area from '../../assets/upload_area.svg';
 
 const AddProduct = () => {
-
     const [image, setImage] = useState(false);
     const [productDetails, setProductDetails] = useState({
         name: "",
@@ -18,7 +17,10 @@ const AddProduct = () => {
     }
 
     const changeHandler = (e) => {
-        setProductDetails({...productDetails,[e.target.name]:e.target.value})
+        setProductDetails({
+            ...productDetails,
+            [e.target.name]: e.target.value 
+        });
     }
 
     const addProductFunct = async () => {
@@ -35,20 +37,20 @@ const AddProduct = () => {
                 Accept: 'application/json'
             },
             body: formData,
-        }).then((resp) => resp.json()).then((data)=>{responseData = data});
+        }).then((resp) => resp.json()).then((data) => { responseData = data });
 
         if (responseData.success) {
             product.image = responseData.image_url;
             console.log(product);
             await fetch('http://localhost:4000/addproduct', {
-                method:'POST',
-                headers:{
+                method: 'POST',
+                headers: {
                     Accept: 'application/json',
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify(product),
-            }).then((resp)=> resp.json()).then((data)=>{
-                data.success?alert("Product Added Successfully"):alert("Failed to Add Product")
+            }).then((resp) => resp.json()).then((data) => {
+                data.success ? alert("Product Added Successfully") : alert("Failed to Add Product")
             })
         }
     }
@@ -57,16 +59,16 @@ const AddProduct = () => {
         <div className='add-product'>
             <div className="addproduct-itemfield">
                 <p>Product Title</p>
-                <input value={productDetails.name} onChange={changeHandler} type="text" name="name" placeholder='Type Here'/>
+                <input value={productDetails.name} onChange={changeHandler} type="text" name="name" placeholder='Type Here' />
             </div>
             <div className="addproduct-price">
                 <div className="addproduct-itemfield">
                     <p>Price</p>
-                    <input value={productDetails.old_price} onChange={changeHandler} type="text" name="old-price" placeholder='Type Here'/>
+                    <input value={productDetails.old_price} onChange={changeHandler} type="text" name="old_price" placeholder='Type Here' />
                 </div>
                 <div className="addproduct-itemfield">
                     <p>Offer Price</p>
-                    <input value={productDetails.new_price} onChange={changeHandler} type="text" name="new-price" placeholder='Type Here'/>
+                    <input value={productDetails.new_price} onChange={changeHandler} type="text" name="new_price" placeholder='Type Here' />
                 </div>
             </div>
             <div className="addproduct-itemfield">
@@ -79,11 +81,11 @@ const AddProduct = () => {
             </div>
             <div className="addproduct-itemfield">
                 <label htmlFor="file-input">
-                    <img src={image?URL.createObjectURL(image):upload_area} className='addproduct-thumbnail-img' alt="" />
+                    <img src={image ? URL.createObjectURL(image) : upload_area} className='addproduct-thumbnail-img' alt="" />
                 </label>
                 <input onChange={imageHandler} type="file" name='image' id='file-input' hidden />
             </div>
-            <button onClick={()=>(addProductFunct())} className='addproduct-button'>Add Product</button>
+            <button onClick={() => (addProductFunct())} className='addproduct-button'>Add Product</button>
         </div>
     )
 }
