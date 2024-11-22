@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken');
 
 const app = express();
 const path = require('path');
+const { type } = require('os');
 // const { error, log } = require('console');
 // const { json } = require('stream/consumers');
 
@@ -145,6 +146,27 @@ app.get('/allproducts', async (req,res) => {
     let products = await Product.find({});
     console.log("All Products Fetched");
     res.json(products);
+})
+
+// Schema User Model
+const Users = mongoose.model('Users',{
+    name:{
+        type:String,
+    },
+    email: {
+        type:String,
+        unique:true,
+    },
+    password: {
+        type:String,
+    },
+    cartData:{
+        type:Object,
+    },
+    date: {
+        type: Date,
+        default: Date.now,
+    }
 })
 
 app.listen(port, (error) => {
