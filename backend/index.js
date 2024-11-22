@@ -198,6 +198,11 @@ app.post('/signup', async (req, res) => {
     res.json({success:true,token})
 })
 
+// User Login Endpoint
+app.post('/login', async (req,res) => {
+    
+})
+
 app.listen(port, (error) => {
     if (!error) {
         console.log("Server Running On Port " + port);
