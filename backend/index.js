@@ -237,6 +237,11 @@ app.get('/popularinwomen', async (req, res) => {
     res.send(popular_in_women);
 })
 
+// Add Product in cartdata
+app.post('/addtocart', async (req, res) => {
+    
+})
+
 app.listen(port, (error) => {
     if (!error) {
         console.log("Server Running On Port " + port);
