@@ -256,10 +256,21 @@ const fetchUser = async (req,res,next) => {
 
 // Add Product in cartdata
 app.post('/addtocart', fetchUser , async (req, res) => {
+    console.log("Added", req.body.itemId);
     let userData = await Users.findOne({_id:req.user.id});
     userData.cartData[req.body.itemId] += 1;
     await Users.findByIdAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
     res.send("Add Success");
+})
+
+//Endpoint Remove from CartData
+app.post('/removefromcart', fetchUser , async (req,res) => {
+    console.log("Removed", req.body.itemId);
+    let userData = await Users.findOne({_id:req.user.id});
+    if (userData.cartData[req.body.itemId] > 0)
+    userData.cartData[req.body.itemId] -= 1;
+    await Users.findByIdAndUpdate({_id:req.user.id}, {cartData:userData.cartData});
+    res.send("Removed");
 })
 
 app.listen(port, (error) => {
